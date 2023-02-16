@@ -4,6 +4,7 @@ In order to adequately prepare for the program ,watch thoroughly this video by a
 
 
 Follow the following steps to get prepared :
+
 1.Create a Github Account. 
 link to resource-https://www.youtube.com/watch?v=rirBD2CZZXQ&list=PLBfufR7vyJJ7k25byhRXJldB5AiwgNnWv&index=2
 make sure to turn on your MFA
