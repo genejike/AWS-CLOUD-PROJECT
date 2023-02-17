@@ -62,4 +62,8 @@ follow the steps to create
 your final icon should look like this 
 ![Alt text](../images%20/week%200%20image%20/created-budget.png)
 
-you can also check out your cost allocation tags 
+you can also check out your cost allocation tags ,cost explorer,credits ,billing calculator and free tier services offered which are  all explained in the video
+
+## Conceptual Diagram 
+A conceptual model is a representation of a system. It consists of concepts used to help people know, understand, or simulate a subject the model represents. 
+![Alt text](../Journal%20images/week%200%20image%20/conceptual%20diagram.png)
