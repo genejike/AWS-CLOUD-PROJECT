@@ -1,7 +1,7 @@
 # Week 0 — Billing and Architecture
 ### step 1
 In order to adequately prepare for the program ,watch thoroughly this [video](https://www.youtube.com/playlist?list=PLBfufR7vyJJ7k25byhRXJldB5AiwgNnWv
-) by andrew brown - 
+) by andrew brown 
 
 
 Follow the following steps to get prepared :
@@ -25,9 +25,32 @@ Follow the following steps to get prepared :
 4b. After setting up your repository create your repository from the [template](https://www.youtube.com/watch?v=8cxYgaMB9ow&list=PLBfufR7vyJJ7k25byhRXJldB5AiwgNnWv&index=8) provided 
 
 
-5.Create [Lucidchart](https://www.youtube.com/watch?v=bgFzBYLT3sU&list=PLBfufR7vyJJ7k25byhRXJldB5AiwgNnWv&index=9)
+5.Create [Lucidchart](https://www.youtube.com/watch?v=bgFzBYLT3sU&list=PLBfufR7vyJJ7k25byhRXJldB5Ai
+wgNnWv&index=9)
 
 6.Create [Honeycomb.io account](https://www.youtube.com/watch?v=7IwtVLfSD0o&list=PLBfufR7vyJJ7k25byhRXJldB5AiwgNnWv&index=10).
 
 7.Create [Rollbar account](https://www.youtube.com/watch?v=Lpm6oAP3Fb0&list=PLBfufR7vyJJ7k25byhRXJldB5AiwgNnWv&index=11).
 
+## Billing setup 
+KINDLY FOLLOW THESE [BILLING](https://www.youtube.com/watch?v=OVw3RrlP-sI&list=PLBfufR7vyJJ7k25byhRXJldB5AiwgNnWv&index=14) STEPS IN THIS VIDEO
+
+Search billing in the aws console 
+click on bills to view your bills summary and billing  details
+if your on a free tier account click on free tier to see your usage statistics
+### Set up billing alerts
+1.click on billing preferences and input your email to receive billing alerts by email
+
+![Alt text](../images%20/week%200%20image%20/added%20gmail.png)
+
+click on the manage billing alerts icon and it opens up cloud watch 
+to set up your alarms click on the in alarm and create alarm then click select metric
+
+![Alt text](../images%20/week%200%20image%20/create-alarm.png)
+select billing and total estimated charges 
+click on the currency and click select metric. change the metric name and scroll down and define the threshold value
+select an sns topic if you have one created or create a new one fill in apprioptely and click next 
+add the alarm name click next .
+preview your actions and create 
+
+![Alt text](../images%20/week%200%20image%20/alarm-created.png)
