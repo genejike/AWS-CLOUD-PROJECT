@@ -25,8 +25,7 @@ Follow the following steps to get prepared :
 4b. After setting up your repository create your repository from the [template](https://www.youtube.com/watch?v=8cxYgaMB9ow&list=PLBfufR7vyJJ7k25byhRXJldB5AiwgNnWv&index=8) provided 
 
 
-5.Create [Lucidchart](https://www.youtube.com/watch?v=bgFzBYLT3sU&list=PLBfufR7vyJJ7k25byhRXJldB5Ai
-wgNnWv&index=9)
+5.Create [Lucidchart](https://www.youtube.com/watch?v=bgFzBYLT3sU&list=PLBfufR7vyJJ7k25byhRXJldB5AiwgNnWv&index=9)
 
 6.Create [Honeycomb.io account](https://www.youtube.com/watch?v=7IwtVLfSD0o&list=PLBfufR7vyJJ7k25byhRXJldB5AiwgNnWv&index=10).
 
@@ -43,7 +42,9 @@ if your on a free tier account click on free tier to see your usage statistics
 
 ![Alt text](../images%20/week%200%20image%20/added%20gmail.png)
 
-click on the manage billing alerts icon and it opens up cloud watch 
+You can either click on the manage billing alerts icon or the try the new budgets feature 
+
+1.click on the manage billing alerts icon and it opens up cloud watch 
 to set up your alarms click on the in alarm and create alarm then click select metric
 
 ![Alt text](../images%20/week%200%20image%20/create-alarm.png)
@@ -54,3 +55,11 @@ add the alarm name click next .
 preview your actions and create 
 
 ![Alt text](../images%20/week%200%20image%20/alarm-created.png)
+
+2.click on budgets and click on create budgets
+![Alt text](../images%20/week%200%20image%20/budgets.png)
+follow the steps to create 
+your final icon should look like this 
+![Alt text](../images%20/week%200%20image%20/created-budget.png)
+
+you can also check out your cost allocation tags 
