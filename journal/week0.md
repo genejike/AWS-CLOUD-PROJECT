@@ -68,7 +68,20 @@ you can also check out your cost allocation tags ,cost explorer,credits ,billing
 A conceptual model is a representation of a system. It consists of concepts used to help people know, understand, or simulate a subject the model represents. 
 
 [MY CONCEPTUAL MODEL](https://lucid.app/lucidchart/fbd3e4e9-635b-4ff3-8d37-5123310d8641/edit?invitationId=inv_a3ec831b-29f3-4106-8e87-d65d0a241263)
+
+Napkin design
 ![Alt text](/Journal-images/image-0/conceptual-diagram.png)
+
+
+
+### [My Logical Diagram](https://lucid.app/lucidchart/5f28964b-e389-4943-8ab3-b2009bf6c0b4/edit?viewport_loc=-11%2C-10%2C1472%2C628%2C0_0&invitationId=inv_a4f519de-cb75-41f6-94d0-14051236e04b)
+
+
+
+
+
+
+
 ## Cloud security
 
 [AWS organizations and IAM Tutorial](https://www.youtube.com/watch?v=4EMWBYVggQI&list=PLBfufR7vyJJ7k25byhRXJldB5AiwgNnWv&index=15)
@@ -115,5 +128,111 @@ Review and create
 ![Alt text](/Journal-images/image-0/user-created.png)
 
 Set up the MFA also for this account
+
+## AWS CLI
+
+Install AWS CLI
+
+The bash commands we are using are the same as the [AWS CLI Install Instructions](https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html)
+
+Update our .gitpod.yml to include the following task.
+
+     tasks:
+     - name: aws-cli
+     env:
+      AWS_CLI_AUTO_PROMPT: on-partial
+    init: |
+      cd /workspace
+      curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
+      unzip awscliv2.zip
+      sudo ./aws/install
+      cd $THEIA_WORKSPACE_ROOT
+
+Run these commands indivually to perform the install manually
+
+Create a new User and Generate AWS Credentials
+
+create a new user
+Enable console access for the user
+Create a new Admin Group and apply Administrator Access
+Create the user and go find and click into the user
+Click on Security Credentials and Create Access Key
+Choose AWS CLI Access
+Download the CSV with the credentials
+Set Env Vars
+set these credentials for the current bash terminal
+
+`export AWS_ACCESS_KEY_ID=""`
+`export AWS_SECRET_ACCESS_KEY=""`
+`export AWS_DEFAULT_REGION=us-east-1`
+
+We'll tell Gitpod to remember these credentials if we relaunch our workspaces
+
+`gp env AWS_ACCESS_KEY_ID=""`
+`gp env AWS_SECRET_ACCESS_KEY=""`
+`gp env AWS_DEFAULT_REGION=us-east-1`
+
+Check that the AWS CLI is working and 
+
+`aws sts get-caller-identity`
+
+![Alt text](/Journal-images/image-0/user-bootcamp1.png)
+
+Enable Billing using cli
+
+In your Root Account go to the Billing Page
+Under Billing Preferences Choose Receive Billing Alerts
+
+Save Preferences
+
+Creating a Billing Alarm
+
+Create SNS Topic
+
+We need an SNS topic before we create an alarm.
+The SNS topic is what will deliver to us an alert when we get overbilled
+
+`aws sns create-topic`
+
+We'll create a SNS Topic
+
+`aws sns create-topic --name billing-alarm`
+
+which will return a TopicARN
+
+We'll create a subscription supply the TopicARN and our Email
+
+    aws sns subscribe \
+    --topic-arn TopicARN \
+    --protocol email \
+    --notification-endpoint your@email.com
+Check your email and confirm the subscription
+
+### Create Alarm
+`aws cloudwatch put-metric-alarm`
+
+### Create an Alarm via AWS CLI
+
+We need to update the configuration json script with the TopicARN we generated earlier
+
+    aws cloudwatch put-metric-alarm --cli-input-json file://aws/json/alarm_config.json
+
+
+Create an AWS Budget via Awscli
+
+`aws budgets create-budget`
+
+Get your AWS Account ID
+
+`aws sts get-caller-identity --query Account --output text`
+
+Supply your AWS Account ID
+Update the json files
+
+
+    aws budgets create-budget \
+    --account-id AccountID \
+    --budget file://aws/json/budget.json \
+    --notifications-with-subscribers file://aws/json/budget-notifications-with-subscribers.json
 
 
