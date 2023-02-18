@@ -40,30 +40,54 @@ if your on a free tier account click on free tier to see your usage statistics
 ### Set up billing alerts
 1.click on billing preferences and input your email to receive billing alerts by email
 
-![Alt text](/Journal-images/image-0%20/added-gmail.png)
+![Alt text](/Journal-images/image-0/added-gmail.png)
 
 You can either click on the manage billing alerts icon or the try the new budgets feature 
 
 1.click on the manage billing alerts icon and it opens up cloud watch 
 to set up your alarms click on the in alarm and create alarm then click select metric
 
-![Alt text](/Journal-images/image-0%20/create-alarm.png)
+![Alt text](/Journal-images/image-0/create-alarm.png)
 select billing and total estimated charges 
 click on the currency and click select metric. change the metric name and scroll down and define the threshold value
 select an sns topic if you have one created or create a new one fill in apprioptely and click next 
 add the alarm name click next .
 preview your actions and create 
 
-![Alt text](/Journal-images/image-0%20/alarm-created.png)
+![Alt text](/Journal-images/image-0/alarm-created.png)
 
 2.click on budgets and click on create budgets
-![Alt text](/Journal-images/image-0%20/budgets.png)
+![Alt text](/Journal-images/image-0/budgets.png)
 follow the steps to create 
 your final icon should look like this 
-![Alt text](/Journal-images/image-0%20/created-budget.png)
+![Alt text](/Journal-images/image-0/created-budget.png)
 
 you can also check out your cost allocation tags ,cost explorer,credits ,billing calculator and free tier services offered which are  all explained in the video
 
 ## Conceptual Diagram 
 A conceptual model is a representation of a system. It consists of concepts used to help people know, understand, or simulate a subject the model represents. 
-![Alt text](/Journal-images/image-0%20/conceptual-diagram.png)
+
+[MY CONCEPTUAL MODEL](https://lucid.app/lucidchart/fbd3e4e9-635b-4ff3-8d37-5123310d8641/edit?invitationId=inv_a3ec831b-29f3-4106-8e87-d65d0a241263)
+![Alt text](/Journal-images/image-0/conceptual-diagram.png)
+
+## Setting up your MFA 
+These can be done in 2 ways 
+1.Search for IAM on the search page and click on it .
+
+Alternatively 
+
+2.you can go to the account section and click on the security credentials 
+
+![Alt text](/Journal-images/image-0/security-credentials1.png)
+
+write a device name and select an MFA device
+and complete the steps . i used the mobile phone authenticator
+
+![Alt text](/Journal-images/image-0/MFA.png)
+
+## Aws organizations
+A central management for multiple aws accounts.
+Go to the aws organization and create an organization unit click on roots scroll down and create an organisation unit also remember to add tags form the habit of tagging 
+
+![Alt text](/Journal-images/image-0/organisation-unit.png)
+You can explore the actions button to see what you can do 
