@@ -69,8 +69,10 @@ A conceptual model is a representation of a system. It consists of concepts used
 
 [MY CONCEPTUAL MODEL](https://lucid.app/lucidchart/fbd3e4e9-635b-4ff3-8d37-5123310d8641/edit?invitationId=inv_a3ec831b-29f3-4106-8e87-d65d0a241263)
 ![Alt text](/Journal-images/image-0/conceptual-diagram.png)
+## Cloud security
 
-## Setting up your MFA 
+[AWS organizations and IAM Tutorial](https://www.youtube.com/watch?v=4EMWBYVggQI&list=PLBfufR7vyJJ7k25byhRXJldB5AiwgNnWv&index=15)
+### Setting up your MFA 
 These can be done in 2 ways 
 1.Search for IAM on the search page and click on it .
 
@@ -85,9 +87,33 @@ and complete the steps . i used the mobile phone authenticator
 
 ![Alt text](/Journal-images/image-0/MFA.png)
 
-## Aws organizations
+### Aws organizations
 A central management for multiple aws accounts.
 Go to the aws organization and create an organization unit click on roots scroll down and create an organisation unit also remember to add tags form the habit of tagging 
 
 ![Alt text](/Journal-images/image-0/organisation-unit.png)
 You can explore the actions button to see what you can do 
+
+### AWS Cloud Trail
+for Monitoring  Data Security and Residence
+for audit logs
+understanding the region vs availabilityzone vs global zone concept
+click on cloud trail and set it up
+
+### IAM USERS
+1.Go to the IAM user 
+
+2.Click on the add user 
+
+3.Specify the user details 
+
+4.Set permissions
+
+Review and create 
+![Alt text](/Journal-images/image-0/Retrive-password.png)
+
+![Alt text](/Journal-images/image-0/user-created.png)
+
+Set up the MFA also for this account
+
+
