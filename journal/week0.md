@@ -40,30 +40,30 @@ if your on a free tier account click on free tier to see your usage statistics
 ### Set up billing alerts
 1.click on billing preferences and input your email to receive billing alerts by email
 
-![Alt text](../images%20/week%200%20image%20/added%20gmail.png)
+![Alt text](/Journal-images/image-0%20/added-gmail.png)
 
 You can either click on the manage billing alerts icon or the try the new budgets feature 
 
 1.click on the manage billing alerts icon and it opens up cloud watch 
 to set up your alarms click on the in alarm and create alarm then click select metric
 
-![Alt text](../images%20/week%200%20image%20/create-alarm.png)
+![Alt text](/Journal-images/image-0%20/create-alarm.png)
 select billing and total estimated charges 
 click on the currency and click select metric. change the metric name and scroll down and define the threshold value
 select an sns topic if you have one created or create a new one fill in apprioptely and click next 
 add the alarm name click next .
 preview your actions and create 
 
-![Alt text](../images%20/week%200%20image%20/alarm-created.png)
+![Alt text](/Journal-images/image-0%20/alarm-created.png)
 
 2.click on budgets and click on create budgets
-![Alt text](../images%20/week%200%20image%20/budgets.png)
+![Alt text](/Journal-images/image-0%20/budgets.png)
 follow the steps to create 
 your final icon should look like this 
-![Alt text](../images%20/week%200%20image%20/created-budget.png)
+![Alt text](/Journal-images/image-0%20/created-budget.png)
 
 you can also check out your cost allocation tags ,cost explorer,credits ,billing calculator and free tier services offered which are  all explained in the video
 
 ## Conceptual Diagram 
 A conceptual model is a representation of a system. It consists of concepts used to help people know, understand, or simulate a subject the model represents. 
-![Alt text](../Journal%20images/week%200%20image%20/conceptual%20diagram.png)
+![Alt text](/Journal-images/image-0%20/conceptual-diagram.png)
