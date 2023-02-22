@@ -75,7 +75,7 @@ Napkin design
 
 
 ###  This is [My Logical Diagram](https://lucid.app/lucidchart/5f28964b-e389-4943-8ab3-b2009bf6c0b4/edit?viewport_loc=-11%2C-10%2C1472%2C628%2C0_0&invitationId=inv_a4f519de-cb75-41f6-94d0-14051236e04b)
-![Alt text](../Journal-images/image-0/logical%20diagram.png)
+![Alt text](/Journal-images/image-0/updated%20logical%20diagram.png)
 
 
 
