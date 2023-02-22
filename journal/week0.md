@@ -67,14 +67,15 @@ you can also check out your cost allocation tags ,cost explorer,credits ,billing
 ## Conceptual Diagram 
 A conceptual model is a representation of a system. It consists of concepts used to help people know, understand, or simulate a subject the model represents. 
 
-[MY CONCEPTUAL MODEL](https://lucid.app/lucidchart/fbd3e4e9-635b-4ff3-8d37-5123310d8641/edit?invitationId=inv_a3ec831b-29f3-4106-8e87-d65d0a241263)
+This is [MY CONCEPTUAL MODEL](https://lucid.app/lucidchart/fbd3e4e9-635b-4ff3-8d37-5123310d8641/edit?invitationId=inv_a3ec831b-29f3-4106-8e87-d65d0a241263)
 
 Napkin design
 ![Alt text](/Journal-images/image-0/conceptual-diagram.png)
 
 
 
-### [My Logical Diagram](https://lucid.app/lucidchart/5f28964b-e389-4943-8ab3-b2009bf6c0b4/edit?viewport_loc=-11%2C-10%2C1472%2C628%2C0_0&invitationId=inv_a4f519de-cb75-41f6-94d0-14051236e04b)
+###  This is [My Logical Diagram](https://lucid.app/lucidchart/5f28964b-e389-4943-8ab3-b2009bf6c0b4/edit?viewport_loc=-11%2C-10%2C1472%2C628%2C0_0&invitationId=inv_a4f519de-cb75-41f6-94d0-14051236e04b)
+![Alt text](../Journal-images/image-0/logical%20diagram.png)
 
 
 
