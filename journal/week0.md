@@ -164,20 +164,25 @@ Set Env Vars
 set these credentials for the current bash terminal
 
 `export AWS_ACCESS_KEY_ID=""`
+
 `export AWS_SECRET_ACCESS_KEY=""`
+
 `export AWS_DEFAULT_REGION=us-east-1`
 
 We'll tell Gitpod to remember these credentials if we relaunch our workspaces
 
 `gp env AWS_ACCESS_KEY_ID=""`
+
 `gp env AWS_SECRET_ACCESS_KEY=""`
+
 `gp env AWS_DEFAULT_REGION=us-east-1`
+
 
 Check that the AWS CLI is working and 
 
 `aws sts get-caller-identity`
 
-![Alt text](/Journal-images/image-0/user-bootcamp1.png)
+![Alt text](../Journal-images/image-0/caller_identity1.png)
 
 Enable Billing using cli
 
