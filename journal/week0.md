@@ -182,7 +182,7 @@ Check that the AWS CLI is working and
 
 `aws sts get-caller-identity`
 
-![Alt text](../Journal-images/image-0/caller_identity1.png)
+![Alt text](/Journal-images/image-0/caller_identity1.png)
 
 Enable Billing using cli
 
@@ -213,6 +213,8 @@ We'll create a subscription supply the TopicARN and our Email
     --protocol email \
     --notification-endpoint your@email.com
 Check your email and confirm the subscription
+
+![Alt text](/Journal-images/image-0/billingandbudget.png)
 
 ### Create Alarm
 `aws cloudwatch put-metric-alarm`
