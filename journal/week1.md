@@ -11,15 +11,13 @@ Gitpod is preinstalled with theis extension
 
 Containerize Backend
 Run Python
-```cd backend-flask```
 
-```export FRONTEND_URL="*"```
+```'cd backend-flask
+   export FRONTEND_URL="*"
+   export BACKEND_URL="*"
+   python3 -m flask run --host=0.0.0.0 --port=4567
+   cd ..'```
 
-```export BACKEND_URL="*"````
-
-```python3 -m flask run --host=0.0.0.0 --port=4567```
-
-```cd ..```
 make sure to unlock the port on the port tab
 open the link for 4567 in your browser
 ![PORT RUNNING 4567](https://user-images.githubusercontent.com/75420964/221658444-89938ef9-af7b-4b92-ad7b-61a379d20be2.png)
@@ -45,12 +43,24 @@ ENV FLASK_ENV=development
 
 EXPOSE ${PORT}
 CMD [ "python3", "-m" , "flask", "run", "--host=0.0.0.0", "--port=4567"]
+
+![dockerfile](https://user-images.githubusercontent.com/75420964/221670921-c18ccc54-84c4-41b6-96a1-5ee434eeb74d.png)
+
+
 Build Container
+
 docker build -t  backend-flask ./backend-flask
+
+![docker build backend 1](https://user-images.githubusercontent.com/75420964/221670997-89ff3cfb-53f6-43eb-a891-dc690ce6281a.png)
+![docker images](https://user-images.githubusercontent.com/75420964/221671543-919ea44c-507f-49b3-8a74-33e0df2701b5.png)
+
 Run Container
 Run
 
 docker run --rm -p 4567:4567 -it backend-flask
+
+![docker run 1](https://user-images.githubusercontent.com/75420964/221671471-a5750ae4-ec93-4547-96a2-223a801acbe1.png)
+
 FRONTEND_URL="*" BACKEND_URL="*" docker run --rm -p 4567:4567 -it backend-flask
 export FRONTEND_URL="*"
 export BACKEND_URL="*"
