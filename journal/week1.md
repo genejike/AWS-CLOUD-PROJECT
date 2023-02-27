@@ -2,17 +2,19 @@
 References
 Good Article for Debugging Connection Refused https://pythonspeed.com/articles/docker-connection-refused/
 
-VSCode Docker Extension
+### VSCode Docker Extension
 Docker for VSCode makes it easy to work with Docker
 
 https://code.visualstudio.com/docs/containers/overview
 
 Gitpod is preinstalled with theis extension
 
-Containerize Backend
+### Containerize Backend
+
 Run Python
 
-```cd backend-flask
+```
+cd backend-flask
 export FRONTEND_URL="*"
 export BACKEND_URL="*"
 python3 -m flask run --host=0.0.0.0 --port=4567
@@ -28,9 +30,10 @@ you should get back json
 ![JSON](https://user-images.githubusercontent.com/75420964/221658534-6c74e018-a39d-4c08-b444-60835ff339ac.png)
 
 
-Add Dockerfile
-Create a file here: backend-flask/Dockerfile
+### Add Dockerfile
 
+Create a file here: backend-flask/Dockerfile
+```
 FROM python:3.10-slim-buster
 
 WORKDIR /backend-flask
@@ -45,23 +48,28 @@ ENV FLASK_ENV=development
 EXPOSE ${PORT}
 CMD [ "python3", "-m" , "flask", "run", "--host=0.0.0.0", "--port=4567"]
 
+``` 
+
 ![dockerfile](https://user-images.githubusercontent.com/75420964/221670921-c18ccc54-84c4-41b6-96a1-5ee434eeb74d.png)
 
 
 Build Container
 
+```
 docker build -t  backend-flask ./backend-flask
+``` 
 
 ![docker build backend 1](https://user-images.githubusercontent.com/75420964/221670997-89ff3cfb-53f6-43eb-a891-dc690ce6281a.png)
 ![docker images](https://user-images.githubusercontent.com/75420964/221671543-919ea44c-507f-49b3-8a74-33e0df2701b5.png)
 
-Run Container
+### Run Container
+
 Run
-
+```
 docker run --rm -p 4567:4567 -it backend-flask
-
+```
 ![docker run 1](https://user-images.githubusercontent.com/75420964/221671471-a5750ae4-ec93-4547-96a2-223a801acbe1.png)
-
+```
 FRONTEND_URL="*" BACKEND_URL="*" docker run --rm -p 4567:4567 -it backend-flask
 export FRONTEND_URL="*"
 export BACKEND_URL="*"
@@ -69,12 +77,15 @@ docker run --rm -p 4567:4567 -it -e FRONTEND_URL='*' -e BACKEND_URL='*' backend-
 docker run --rm -p 4567:4567 -it  -e FRONTEND_URL -e BACKEND_URL backend-flask
 unset FRONTEND_URL="*"
 unset BACKEND_URL="*"
+```
 Run in background
-
+```
 docker container run --rm -p 4567:4567 -d backend-flask
+```
 Return the container id into an Env Vat
-
+```
 CONTAINER_ID=$(docker run --rm -p 4567:4567 -d backend-flask)
+```
 docker container run is idiomatic, docker run is legacy syntax but is commonly used.
 
 Get Container Images or Running Container Ids
