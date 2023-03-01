@@ -2,7 +2,7 @@ FROM python:3.10-slim-buster
 # inside container
 WORKDIR /backend-flask
 # outside container ->inside container 
-#inside the oython libraries used for the app
+#inside the python libraries used for the app
 COPY requirements.txt requirements.txt
 #inside container
 RUN pip3 install -r requirements.txt
