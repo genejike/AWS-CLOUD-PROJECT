@@ -199,14 +199,18 @@ services:
 ```
 # the name flag is a hack to change the default prepend folder
 # name when outputting the image names
+
 ```
 networks: 
   internal-network:
     driver: bridge
     name: cruddur
 ```
+
 Adding DynamoDB Local and Postgres
+
 We are going to use Postgres and DynamoDB local in future labs We can bring them in as containers and reference them externally
+
 
 Lets integrate the following into our existing docker compose file:
 ```
@@ -225,15 +229,22 @@ services:
 volumes:
   db:
     driver: local
+```  
+ 
 To install the postgres client into Gitpod
 
+```
   - name: postgres
     init: |
       curl -fsSL https://www.postgresql.org/media/keys/ACCC4CF8.asc|sudo gpg --dearmor -o /etc/apt/trusted.gpg.d/postgresql.gpg
       echo "deb http://apt.postgresql.org/pub/repos/apt/ `lsb_release -cs`-pgdg main" |sudo tee  /etc/apt/sources.list.d/pgdg.list
       sudo apt update
       sudo apt install -y postgresql-client-13 libpq-dev
-DynamoDB Local
+```
+      
+### DynamoDB Local
+
+```
 services:
   dynamodb-local:
     # https://stackoverflow.com/questions/67533058/persist-local-dynamodb-data-in-volumes-lack-permission-unable-to-open-databa
@@ -254,13 +265,17 @@ Example of using DynamoDB local https://github.com/100DaysOfCloud/challenge-dyna
 Volumes
 directory volume mapping
 
+```
 volumes: 
 - "./docker/dynamodb:/home/dynamodblocal/data"
 named volume mapping
-
+```
+```
 volumes: 
   - db:/var/lib/postgresql/data
-
+```
+```
 volumes:
   db:
     driver: local
+```
