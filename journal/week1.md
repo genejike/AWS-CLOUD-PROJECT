@@ -207,6 +207,139 @@ networks:
     name: cruddur
 ```
 
+### Add the notification feature for the backend and frontend
+kindly watch this [video](https://www.youtube.com/watch?v=k-_o0cCpksk&list=PLBfufR7vyJJ7k25byhRXJldB5AiwgNnWv&index=27) for proper implementation
+At the backend files open the openapi-3.0.yml file
+and after the /api/Messages add this
+
+```
+  /api/activities/notifications:
+    get:
+      description: 'Return a feed of activity for all the people i follow'
+      tags:
+        - activities
+        
+      parameters: []
+      responses:
+        '200':
+          description: Returns an array of activities
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Activity'
+ ```
+at the back end open services 
+create a notification_activities.py file and add the following code, you can edit the message and handle part if you like
+```
+from datetime import datetime, timedelta, timezone
+class NotificationsActivities:
+  def run():
+    now = datetime.now(timezone.utc).astimezone() 
+    results = [{
+      'uuid': '68f126b0-1ceb-4a33-88be-d90fa7109eee',
+      'handle':  'coco',
+      'message': 'i am a red corn!',
+      'created_at': (now - timedelta(days=2)).isoformat(),
+      'expires_at': (now + timedelta(days=5)).isoformat(),
+      'likes_count': 5,
+      'replies_count': 1,
+      'reposts_count': 0,
+      'replies': [{
+        'uuid': '26e12864-1c26-5c3a-9658-97a10f8fea67',
+        'reply_to_activity_uuid': '68f126b0-1ceb-4a33-88be-d90fa7109eee',
+        'handle':  'Worf',
+        'message': 'This post has no honor!',
+        'likes_count': 0,
+        'replies_count': 0,
+        'reposts_count': 0,
+        'created_at': (now - timedelta(days=2)).isoformat()
+      }],
+    },
+   
+    ]
+    return results
+```
+![notification_activities backend](https://user-images.githubusercontent.com/75420964/222570881-c08af545-cb2f-4c8a-8da5-ca4887d2c7cf.png)
+do a docker compose to check if its working and add a /api/activities/notifications 
+
+![working backend](https://user-images.githubusercontent.com/75420964/222571498-b24fb6e4-7deb-4fd8-aea1-cf1f5a36b30c.png)
+
+for the frontend
+
+open the frontend_react_js file ,open the src folder,open the app.js file and edit the contents to include the notification parameters
+```
+import './App.css';
+
+import HomeFeedPage from './pages/HomeFeedPage';
+import NotificationsFeedPage from './pages/NotificationsFeedPage';
+import UserFeedPage from './pages/UserFeedPage';
+import SignupPage from './pages/SignupPage';
+import SigninPage from './pages/SigninPage';
+import RecoverPage from './pages/RecoverPage';
+import MessageGroupsPage from './pages/MessageGroupsPage';
+import MessageGroupPage from './pages/MessageGroupPage';
+import ConfirmationPage from './pages/ConfirmationPage';
+import React from 'react';
+import {
+  createBrowserRouter,
+  RouterProvider
+} from "react-router-dom";
+
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <HomeFeedPage />
+  },
+  {
+    path: "/notifications",
+    element: <NotificationsFeedPage />
+  },
+  {
+    path: "/@:handle",
+    element: <UserFeedPage />
+  },
+  {
+    path: "/messages",
+    element: <MessageGroupsPage />
+  },
+  {
+    path: "/messages/@:handle",
+    element: <MessageGroupPage />
+  },
+  {
+    path: "/signup",
+    element: <SignupPage />
+  },
+  {
+    path: "/signin",
+    element: <SigninPage />
+  },
+  {
+    path: "/confirm",
+    element: <ConfirmationPage />
+  },
+  {
+    path: "/forgot",
+    element: <RecoverPage />
+  }
+]);
+
+function App() {
+  return (
+    <>
+      <RouterProvider router={router} />
+    </>
+  );
+}
+
+export default App;
+```
+open the src and pages folder and create the NotificationsFeedPage.js and NotificationFeedPage.css and copy the codes from the HomeFeedPage.js into the latter 
+ and make the necessary edits after that refresh or do a docker compose after signing up 
+![red corn](https://user-images.githubusercontent.com/75420964/222575382-81e9eb2f-fb2f-479c-b782-920ce5a3bc69.png)
+
 Adding DynamoDB Local and Postgres
 
 We are going to use Postgres and DynamoDB local in future labs We can bring them in as containers and reference them externally
@@ -231,7 +364,7 @@ volumes:
     driver: local
 ```  
  
-To install the postgres client into Gitpod
+To install the postgres client into Gitpod.yml
 
 ```
   - name: postgres
@@ -260,6 +393,9 @@ services:
     working_dir: /home/dynamodblocal
     
 ```    
+attach the posgre to the gitod.yml file and connect 
+![post gre connect](https://user-images.githubusercontent.com/75420964/222574876-f0f5d093-039e-4f76-a812-4c248d285b7c.png)
+
 Example of using DynamoDB local https://github.com/100DaysOfCloud/challenge-dynamodb-local
 
 Volumes
