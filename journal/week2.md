@@ -185,6 +185,9 @@ We need to add these two env vars to our backend-flask in our `docker-compose.ym
       AWS_XRAY_URL: "*4567-${GITPOD_WORKSPACE_ID}.${GITPOD_WORKSPACE_CLUSTER_HOST}*"
       AWS_XRAY_DAEMON_ADDRESS: "xray-daemon:2000"
 ```
+ 
+ ![traces](https://user-images.githubusercontent.com/75420964/223892001-2c24837c-e889-4fad-afb4-6b63f3c91fcb.png)
+
 
 ### Check service data for last 10 minutes
 
