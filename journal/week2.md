@@ -103,7 +103,7 @@ Add to the `requirements.txt`
 aws-xray-sdk
 ```
 
-Install pythonpendencies
+Install python dependencies
 
 ```sh
 pip install -r requirements.txt
@@ -143,10 +143,10 @@ Add `aws/json/xray.json`
 ```
 
 ```sh
-FLASK_ADDRESS="https://4567-${GITPOD_WORKSPACE_ID}.${GITPOD_WORKSPACE_CLUSTER_HOST}"
+
 aws xray create-group \
    --group-name "Cruddur" \
-   --filter-expression "service(\"$FLASK_ADDRESS\") {fault OR error}"
+   --filter-expression "service(\"backend-flask\")"
 ```
 
 ```sh
@@ -185,6 +185,8 @@ We need to add these two env vars to our backend-flask in our `docker-compose.ym
       AWS_XRAY_URL: "*4567-${GITPOD_WORKSPACE_ID}.${GITPOD_WORKSPACE_CLUSTER_HOST}*"
       AWS_XRAY_DAEMON_ADDRESS: "xray-daemon:2000"
 ```
+
+
 
 ### Check service data for last 10 minutes
 
