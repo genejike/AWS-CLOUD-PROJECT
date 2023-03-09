@@ -82,6 +82,9 @@ gp env HONEYCOMB_SERVICE_NAME="Cruddur"
 
 
 GO TO YOUR HONEYCOMB PAGE TO VIEW THE TRACES AFTER RUNNING A `docker compose up`
+ 
+![distributed tracing](https://user-images.githubusercontent.com/75420964/223890509-fbfed75e-f04e-4040-ba37-eef48dbcfbea.png)
+
 
 
 ## X-Ray
