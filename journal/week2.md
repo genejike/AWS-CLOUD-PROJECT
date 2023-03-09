@@ -185,6 +185,9 @@ We need to add these two env vars to our backend-flask in our `docker-compose.ym
       AWS_XRAY_URL: "*4567-${GITPOD_WORKSPACE_ID}.${GITPOD_WORKSPACE_CLUSTER_HOST}*"
       AWS_XRAY_DAEMON_ADDRESS: "xray-daemon:2000"
 ```
+ 
+ ![traces](https://user-images.githubusercontent.com/75420964/223892001-2c24837c-e889-4fad-afb4-6b63f3c91fcb.png)
+
 
 
 
@@ -252,6 +255,12 @@ Set the env var in your backend-flask for `docker-compose.yml`
 ```
 
 > passing AWS_REGION doesn't seems to get picked up by boto3 so pass default region instead
+
+![log- group](https://user-images.githubusercontent.com/75420964/223893126-fe9e9375-7c3b-4080-889a-dadce0c7be12.png)
+
+ ![actual logs](https://user-images.githubusercontent.com/75420964/223892881-ea89841b-cf72-4d7c-a86e-f63035d6e2f3.png)
+,
+ 
 
 
 ## Rollbar
