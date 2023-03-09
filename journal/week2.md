@@ -1,6 +1,6 @@
 # Week 2 — Distributed Tracing
 
-# REQUIRED HOMEWORK
+# HOMEWORK
 
 ## HoneyComb
 
@@ -334,3 +334,21 @@ def rollbar_test():
 
 
 [Rollbar Flask Example](https://github.com/rollbar/rollbar-flask-example/blob/master/hello.py)
+
+ 
+open the backend url with the `/api/activities/rollbar/test`
+ ![rollbartest](https://user-images.githubusercontent.com/75420964/224143593-1b310b08-35de-46bb-9ee5-158db0c116b0.png)
+ 
+ open your rollbar and click on items and check all the buttons on levels for warning,error etc 
+ ![rollbartest image](https://user-images.githubusercontent.com/75420964/224144116-a4365f98-264b-4459-9adf-524eff64d104.png)
+ 
+ introduce an error into your code to further understand how it works
+ ![error introduced](https://user-images.githubusercontent.com/75420964/224144674-6338d8e7-226e-4a8d-aa5a-19d2234e1a3e.png)
+ ![type error](https://user-images.githubusercontent.com/75420964/224144882-0d7af512-e913-403b-8c60-3fa2c066f62f.png)
+
+
+ 
+ 
+ 
+
+
