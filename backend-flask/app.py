@@ -72,6 +72,8 @@ tracer = trace.get_tracer(__name__)
 
 app = Flask(__name__)
 
+
+# JWT---
 cognito_jwt_token = CognitoJwtToken(
   user_pool_id=os.getenv("AWS_COGNITO_USER_POOL_ID"), 
   user_pool_client_id=os.getenv("AWS_COGNITO_USER_POOL_CLIENT_ID"),
