@@ -357,6 +357,11 @@ $ aws cognito-idp admin-set-user-password \
  --password <password> \
  --permanent
 
+  check your aws console and then proceed to email for verification 
+  
+ ![user enabled](https://user-images.githubusercontent.com/75420964/225725474-2407001f-391e-4643-9d8f-386f34981540.png)
+
+ 
 ### Authenticating Server Side
 
 Add in the `HomeFeedPage.js` a header to pass along the access token
