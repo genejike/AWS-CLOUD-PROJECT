@@ -351,11 +351,13 @@ const onsubmit_confirm_code = async (event) => {
 
 ### set up user for user pool on the cli from your terminal 
 
+```
 $ aws cognito-idp admin-set-user-password \
  --user-pool-id <your-user-pool-id> \
  --username <username> \
  --password <password> \
  --permanent
+ ```
 
   check your aws console and then proceed to email for verification 
   
