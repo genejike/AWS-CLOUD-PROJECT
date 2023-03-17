@@ -412,6 +412,7 @@ cors = CORS(
 ```
   
 JWT authentication 
+  
   A. pls follow the intruction on the [video](https://www.youtube.com/watch?v=d079jccoG-M&list=PLBfufR7vyJJ7k25byhRXJldB5AiwgNnWv&index=42)
  
   1.create a lib folder in the backend flask and inside it Create a new python file (cognito_jwt_token.py) 
@@ -536,7 +537,7 @@ class CognitoJwtToken:
   
   add 
   ```
-from lib.cognito_jwt_token import CognitoJwtToken, extract_access_to
+from lib.cognito_jwt_token import CognitoJwtToken, extract_access_token
   ```
   after the app=flask(_name_)
   add 
