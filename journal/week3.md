@@ -541,7 +541,7 @@ class CognitoJwtToken:
   ```
 from lib.cognito_jwt_token import CognitoJwtToken, extract_access_token
   ```
-  after the app=flask(_name_)
+  after the `app=flask(_name_)`
   add 
   
   ```
@@ -552,7 +552,7 @@ from lib.cognito_jwt_token import CognitoJwtToken, extract_access_token
 )
 ```
   
-  at the api/activities/home method add this
+  at the api/activities/home method replace with this
   ```
   @app.route("/api/activities/home", methods=['GET'])
 @xray_recorder.capture('activities_home')
