@@ -106,10 +106,15 @@ CREATE EXTENSION IF NOT EXISTS "uuid-ossp";
 https://www.postgresql.org/docs/current/sql-createtable.html
 
 ```sql
+DROP TABLE IF EXISTS public.users;
+DROP TABLE IF EXISTS public.activities;
+```
+
+```sql
 CREATE TABLE public.users (
   uuid UUID DEFAULT uuid_generate_v4() PRIMARY KEY,
   display_name text,
-  handle text
+  handle text,
   cognito_user_id text,
   created_at TIMESTAMP default current_timestamp NOT NULL
 );
@@ -128,10 +133,7 @@ CREATE TABLE public.activities (
 );
 ```
 
-```sql
-DROP TABLE IF EXISTS public.users;
-DROP TABLE IF EXISTS public.activities;
-```
+
 
 # https://aviyadav231.medium.com/automatically-updating-a-timestamp-column-in-postgresql-using-triggers-98766e3b47a0
 
