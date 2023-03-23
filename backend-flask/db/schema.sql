@@ -15,7 +15,7 @@ CREATE TABLE public.users (
 CREATE TABLE public.activities (
   uuid UUID DEFAULT uuid_generate_v4() PRIMARY KEY,
   user_uuid UUID NOT NULL,
-  message text NOT NULL,
+  message_text NOT NULL,
   replies_count integer DEFAULT 0,
   reposts_count integer DEFAULT 0,
   likes_count integer DEFAULT 0,
