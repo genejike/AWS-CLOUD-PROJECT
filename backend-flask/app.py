@@ -27,7 +27,6 @@ import logging
 
 # Rollbar ------
 from time import strftime
-
 import os
 import rollbar
 import rollbar.contrib.flask
@@ -43,7 +42,6 @@ from flask import got_request_exception
 # LOGGER.info("test log")
 
 # HoneyComb ------OTEL---
-
 # HoneyComb ---------
 from opentelemetry import trace
 from opentelemetry.instrumentation.flask import FlaskInstrumentor
@@ -67,12 +65,11 @@ xray_recorder.configure(service='backend-flask', dynamic_naming=xray_url)
 #simple_processor = SimpleSpanProcessor(ConsoleSpanExporter())
 #provider.add_span_processor(simple_processor)
 
-# Show this in the logs within the backend-flask app (STDOUT)trace.set_tracer_provider(provider)
+# Show this in the logs within the backend-flask app (STDOUT)
+trace.set_tracer_provider(provider)
 tracer = trace.get_tracer(__name__)
 
 app = Flask(__name__)
-
-
 # JWT---
 cognito_jwt_token = CognitoJwtToken(
   user_pool_id=os.getenv("AWS_COGNITO_USER_POOL_ID"), 
@@ -118,12 +115,14 @@ def init_rollbar():
 
     # send exceptions from `app` to rollbar, using flask's signal system.
     got_request_exception.connect(rollbar.contrib.flask.report_exception, app)
-#cloud watch logs  
+
+# CloudWatch Logs -----
 #@app.after_request
 #def after_request(response):
- #   timestamp = strftime('[%Y-%b-%d %H:%M]')
-  #  LOGGER.error('%s %s %s %s %s %s', timestamp, request.remote_addr, request.method, request.scheme, request.full_path, response.status)
-   # return response
+#    timestamp = strftime('[%Y-%b-%d %H:%M]')
+#    LOGGER.error('%s %s %s %s %s %s', timestamp, request.remote_addr, request.method, request.scheme, request.full_path, response.status)
+#    return response
+
 @app.route('/rollbar/test')
 def rollbar_test():
     rollbar.report_message('Hello World!', 'warning')
@@ -188,7 +187,6 @@ def data_notifications():
   return data, 200
 
 @app.route("/api/activities/@<string:handle>", methods=['GET'])
-
 @xray_recorder.capture('activities_users')
 def data_handle(handle):
   model = UserActivities.run(handle)
