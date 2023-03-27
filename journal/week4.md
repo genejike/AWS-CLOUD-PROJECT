@@ -451,7 +451,7 @@ We'll add a command step for postgres:
 ```sh
     command: |
       export GITPOD_IP=$(curl ifconfig.me)
-      source "$THEIA_WORKSPACE_ROOT/backend-flask/db-update-sg-rule"
+      source "$THEIA_WORKSPACE_ROOT/backend-flask/bin/db-update-sg-rule"
 ```
 
 
@@ -525,6 +525,32 @@ Alternatively you can create your own development layer by downloading the psyco
 
 - Extract to a folder, then zip up that folder and upload as a new lambda layer to your AWS account
 
+
+or 
+```
+mkdir aws-psycopg2
+
+cd aws-psycopg2
+
+vi get_layer_packages.sh
+
+export PKG_DIR="python"
+
+rm -rf ${PKG_DIR} && mkdir -p ${PKG_DIR}
+
+docker run --rm -v $(pwd):/foo -w /foo lambci/lambda:build-python3.6 \
+    pip install -r requirements.txt --no-deps -t ${PKG_DIR}
+vi requirements.txt
+
+aws-psycopg2
+then do : chmod +x get_layer_packages.sh
+
+./get_layer_packages.sh
+
+zip -r aws-psycopg2.zip .
+
+upload this zip to the AWS Lambda Layer!
+```
 ### Production
 
 Follow the instructions on https://github.com/AbhimanyuHK/aws-psycopg2 to compile your own layer from postgres source libraries for the desired version.
