@@ -451,7 +451,7 @@ We'll add a command step for postgres:
 ```sh
     command: |
       export GITPOD_IP=$(curl ifconfig.me)
-      source "$THEIA_WORKSPACE_ROOT/backend-flask/db-update-sg-rule"
+      source "$THEIA_WORKSPACE_ROOT/backend-flask/bin/db-update-sg-rule"
 ```
 
 
