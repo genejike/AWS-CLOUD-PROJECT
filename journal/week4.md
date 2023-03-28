@@ -559,3 +559,5 @@ Follow the instructions on https://github.com/AbhimanyuHK/aws-psycopg2 to compil
 ## Add the function to Cognito 
 
 Under the user pool properties add the function as a `Post Confirmation` lambda trigger.
+
+[lamda-layer](https://github.com/jetbridge/psycopg2-lambda-layer)
