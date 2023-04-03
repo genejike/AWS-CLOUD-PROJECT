@@ -2,6 +2,8 @@
 
 ## Provision RDS Instance
 
+Run this code on the terminal 
+ 
 ```sh
 aws rds create-db-instance \
   --db-instance-identifier cruddur-db-instance \
@@ -26,13 +28,20 @@ aws rds create-db-instance \
 
 > This will take about 10-15 mins
 
-We can temporarily stop an RDS instance for 4 days when we aren't using it.
+We can temporarily stop an RDS instance for 7 days when we aren't using it.
+
+![RDS databases](https://user-images.githubusercontent.com/75420964/229593525-17694624-1d7f-4865-b2e6-b4a81e496593.png)
+
+
 
 To connect to psql via the psql client cli tool remember to use the host flag to specific localhost.
 
 ```
 psql -Upostgres --host localhost
 ```
+
+![postgres l](https://user-images.githubusercontent.com/75420964/229595213-be42e4bd-3eba-427e-8559-66f9874ca9da.png)
+
 
 Common PSQL commands:
 
@@ -64,6 +73,8 @@ https://www.postgresql.org/docs/current/app-createdb.html
 ```
 createdb cruddur -h localhost -U postgres
 ```
+![crudder db create](https://user-images.githubusercontent.com/75420964/229596568-6a9a1930-1cf3-4540-94d4-0a6b0d8a6a57.png)
+
 
 ```sh
 psql -U postgres -h localhost
@@ -133,9 +144,10 @@ CREATE TABLE public.activities (
 );
 ```
 
+![creating tables](https://user-images.githubusercontent.com/75420964/229596798-a4307658-244e-4bd4-8e5c-c1b39944d641.png)
 
 
-# https://aviyadav231.medium.com/automatically-updating-a-timestamp-column-in-postgresql-using-triggers-98766e3b47a0
+### https://aviyadav231.medium.com/automatically-updating-a-timestamp-column-in-postgresql-using-triggers-98766e3b47a0
 
 ```sql
 DROP FUNCTION IF EXISTS func_updated_at();
@@ -195,6 +207,7 @@ To execute the script:
 ```sh
 ./bin/db-connect
 ```
+![db-connect](https://user-images.githubusercontent.com/75420964/229596908-940552c0-799b-49f0-ae80-cfb4f774ecf1.png)
 
 ## Shell script to drop the database
 
@@ -264,6 +277,14 @@ echo $schema_path
 
 psql $CONNECTION_URL cruddur < $schema_path
 ```
+first mistake 
+
+![ha](https://user-images.githubusercontent.com/75420964/229597873-3087361b-5cff-44f3-8033-eb1507b31ea9.png)
+
+my-correction 
+
+![seed](https://user-images.githubusercontent.com/75420964/229598027-c9848b7f-f1c7-486d-8643-6e5116b2efeb.png)
+
 
 ## Easily setup (reset) everything for our database
 
@@ -305,6 +326,8 @@ We need to set the env var for our backend-flask application:
     environment:
       CONNECTION_URL: "${CONNECTION_URL}"
 ```
+
+
 
 https://www.psycopg.org/psycopg3/
 
@@ -451,7 +474,7 @@ We'll add a command step for postgres:
 ```sh
     command: |
       export GITPOD_IP=$(curl ifconfig.me)
-      source "$THEIA_WORKSPACE_ROOT/backend-flask/bin/db-update-sg-rule"
+      source "$THEIA_WORKSPACE_ROOT/backend-flask/bin/rds-update-sg-rule"
 ```
 
 
