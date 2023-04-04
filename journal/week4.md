@@ -727,11 +727,13 @@ class CreateActivity:
     return db.query_object_json(sql,{
       'uuid': uuid
     })
+    
 ```
 
 update home_activities.py
 
 ```
+
 from datetime import datetime, timedelta, timezone
 from opentelemetry import trace
 
@@ -749,10 +751,12 @@ class HomeActivities:
     sql = db.template('activities','home')
     results = db.query_array_json(sql)
     return results    
+    
 ```
 
 update your db.py
 
+```
 from psycopg_pool import ConnectionPool
 import os
 import re
@@ -867,6 +871,7 @@ class Db:
     print ("pgcode:", err.pgcode, "\n")
 
 db = Db()
+
 ```
 
 
@@ -875,6 +880,7 @@ create a folder in the db directory and name them
 create.sql, home.sql, and object.sql.
 
 create.sql
+
 ```
 INSERT INTO public.activities (
   user_uuid,
@@ -890,6 +896,7 @@ VALUES (
   %(message)s,
   %(expires_at)s
 ) RETURNING uuid;
+
 ```
 
 home.sql
@@ -909,8 +916,11 @@ SELECT
 FROM public.activities
 LEFT JOIN public.users ON users.uuid = activities.user_uuid
 ORDER BY activities.created_at DESC
+
 ```
+
 object.sql
+
 ```
 SELECT
   activities.uuid,
@@ -923,6 +933,7 @@ FROM public.activities
 INNER JOIN public.users ON users.uuid = activities.user_uuid 
 WHERE 
   activities.uuid = %(uuid)s
+  
 ```
 
 In the components/ActivityForm.js,at the fetch request body include the user handle
@@ -934,9 +945,11 @@ props.user_handle.handle,
 ```
 
 In app.py under the /api/activities route, add
+
 ```
 user_handle = request.json["user_handle"]
 message = request.json['message']
+
 ```
 ![activities](https://user-images.githubusercontent.com/75420964/229925716-6c4fd02a-58ff-4d1b-a9f9-47c255abe9cb.png)
 
