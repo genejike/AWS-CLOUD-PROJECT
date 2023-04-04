@@ -659,6 +659,12 @@ def lambda_handler(event, context):
           print('Database connection closed.')
     return event
 ```
+ test this with aws cognito
+![image](https://user-images.githubusercontent.com/75420964/229929890-c43c7eb6-40e7-4d0d-9ff5-c83ae453c34c.png)
+
+remmeber to create your tables before tring to log in a new user .
+by running ihe ./bin/db-schema-load prod
+
 
 update your  update  create_activity.py
 
