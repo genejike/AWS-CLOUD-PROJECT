@@ -1,5 +1,67 @@
 # Week 5 — DynamoDB and Serverless Caching
-# Week 5 — DynamoDB and Serverless Caching
+
+add the boto3 to your requirements.txt and cd into the backend and run the pip install -r requirements.txt
+then a docker compose up
+
+create a new folder db and input the 7 bashscript u created last 
+create rds folder and input the update-sg file  in it 
+create a new folder ddb
+and create file drop, schema-load, and seed 
+in the schema-load file 
+```
+#!/usr/bin/env python3
+
+import boto3
+import sys
+
+attrs = {
+  'endpoint_url': 'http://localhost:8000'
+}
+
+if len(sys.argv) == 2:
+  if "prod" in sys.argv[1]:
+    attrs = {}
+
+ddb = boto3.client('dynamodb',**attrs)
+
+table_name = 'cruddur-messages'
+
+
+response = ddb.create_table(
+  TableName=table_name,
+  AttributeDefinitions=[
+    {
+      'AttributeName': 'pk',
+      'AttributeType': 'S'
+    },
+    {
+      'AttributeName': 'sk',
+      'AttributeType': 'S'
+    },
+  ],
+  KeySchema=[
+    {
+      'AttributeName': 'pk',
+      'KeyType': 'HASH'
+    },
+    {
+      'AttributeName': 'sk',
+      'KeyType': 'RANGE'
+    },
+  ],
+  #GlobalSecondaryIndexes=[
+  #],
+  BillingMode='PROVISIONED',
+  ProvisionedThroughput={
+      'ReadCapacityUnits': 5,
+      'WriteCapacityUnits': 5
+  }
+)
+
+print(response)
+```
+too test run the bashh script 
+![ddb1](https://user-images.githubusercontent.com/75420964/230682366-5ce4e99a-3512-4c55-ab41-13a28eec5c1d.png)
 
 
 ## DynamoDB Bash Scripts
