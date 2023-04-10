@@ -69,8 +69,47 @@ too test run the bashh script
 ```sh
 ./bin/ddb/schem-load
 ```
+create a file called list-tables
 
+```
+#! /usr/bin/bash
+set -e # stop if it fails at any point
 
+if [ "$1" = "prod" ]; then
+  ENDPOINT_URL=""
+else
+  ENDPOINT_URL="--endpoint-url=http://localhost:8000"
+fi
+
+aws dynamodb list-tables $ENDPOINT_URL \
+--query TableNames \
+--output table
+  
+```
+
+create drop file 
+```
+#! /usr/bin/bash
+
+set -e # stop if it fails at any point
+
+if [ -z "$1" ]; then
+  echo "No TABLE_NAME argument supplied eg ./bin/ddb/drop cruddur-messages prod "
+  exit 1
+fi
+TABLE_NAME=$1
+
+if [ "$2" = "prod" ]; then
+  ENDPOINT_URL=""
+else
+  ENDPOINT_URL="--endpoint-url=http://localhost:8000"
+fi
+
+echo "deleting table: $TABLE_NAME"
+
+aws dynamodb delete-table $ENDPOINT_URL \
+  --table-name $TABLE_NAME
+```
 ## The Boundaries of DynamoDB
 
 - When you write a query you have provide a Primary Key (equality) eg. pk = 'andrew'
