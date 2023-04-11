@@ -110,6 +110,9 @@ echo "deleting table: $TABLE_NAME"
 aws dynamodb delete-table $ENDPOINT_URL \
   --table-name $TABLE_NAME
 ```
+create seed file
+```
+```
 ## The Boundaries of DynamoDB
 
 - When you write a query you have provide a Primary Key (equality) eg. pk = 'andrew'
