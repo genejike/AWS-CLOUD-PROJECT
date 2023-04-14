@@ -7,7 +7,7 @@ printf "${CYAN}== ${LABEL}${NO_COLOR}\n"
 
 
 #! /usr/bin/bash
--e # stop if it fails at any point
+set -e # stop if it fails at any point
 
 #echo "==== db-setup"
 
