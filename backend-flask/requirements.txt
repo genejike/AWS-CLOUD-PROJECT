@@ -21,3 +21,4 @@ psycopg[pool]
 
 boto3
 
+python-dateutil

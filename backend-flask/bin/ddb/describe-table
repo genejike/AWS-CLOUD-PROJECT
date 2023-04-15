@@ -14,5 +14,6 @@ else
   ENDPOINT_URL="--endpoint-url=http://localhost:8000"
 fi
 
-aws dynamodb delete-table  $ENDPOINT_URL \
-  --table-name $TABLE_NAME
+aws dynamodb describe-table  $ENDPOINT_URL \
+  --table-name $TABLE_NAME \
+  --output table

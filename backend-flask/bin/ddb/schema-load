@@ -10,39 +10,59 @@ attrs = {
 if len(sys.argv) == 2:
   if "prod" in sys.argv[1]:
     attrs = {}
-ddb = boto3.client('dynamodb',**attrs)
 
+dynamodb = boto3.client('dynamodb', **attrs)
 table_name = 'cruddur-messages'
 
-response = ddb.create_table(
-  TableName=table_name,
-  AttributeDefinitions=[
-    {
+# define the schema for the table
+table_schema = {
+  'AttributeDefinitions': [{
+      'AttributeName': 'data',
+      'AttributeType': 'S'
+    },{
       'AttributeName': 'pk',
       'AttributeType': 'S'
-    },
-    {
+    },{
       'AttributeName': 'sk',
       'AttributeType': 'S'
-    },
+    }
   ],
-  KeySchema=[
-    {
+  'KeySchema': [{
       'AttributeName': 'pk',
       'KeyType': 'HASH'
-    },
-    {
+    },{
       'AttributeName': 'sk',
       'KeyType': 'RANGE'
-    },
+    }
   ],
-  #GlobalSecondaryIndexes=[
-  #],
-  BillingMode='PROVISIONED',
-  ProvisionedThroughput={
+  'BillingMode': 'PROVISIONED',
+  'ProvisionedThroughput': {
       'ReadCapacityUnits': 5,
       'WriteCapacityUnits': 5
-  }
+  },
+  'GlobalSecondaryIndexes':[{
+    'IndexName':'data-sk-index',
+    'KeySchema':[{
+      'AttributeName': 'data',
+      'KeyType': 'HASH'
+    },{
+      'AttributeName': 'sk',
+      'KeyType': 'RANGE'
+    }],
+    'Projection': {
+      'ProjectionType': 'ALL'
+    },
+    'ProvisionedThroughput': {
+      'ReadCapacityUnits': 5,
+      'WriteCapacityUnits': 5
+    },
+  }]
+}
+
+# create the table
+response = dynamodb.create_table(
+    TableName=table_name,
+    **table_schema
 )
 
-print(response)
+# print the response
