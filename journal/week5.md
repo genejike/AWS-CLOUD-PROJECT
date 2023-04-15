@@ -60,7 +60,7 @@ response = ddb.create_table(
 
 print(response)
 ```
-too test run the bashh script 
+too test run the bash script 
 ![ddb1](https://user-images.githubusercontent.com/75420964/230682366-5ce4e99a-3512-4c55-ab41-13a28eec5c1d.png)
 
 
@@ -362,7 +362,7 @@ for i in range(len(lines)):
   )
 ```
 
-run the` ./bin/db/create` to create tables 
+run the `./bin/db/create` to create tables 
  then `./bin/db/schemaload` to looad schema 
 ![db-create and schema](https://user-images.githubusercontent.com/75420964/231975478-e86e560b-9e3a-47b5-9982-f0d08b83a8b7.png)
  
@@ -376,7 +376,9 @@ it works
 inserted my create messages .run the ./bin/ddb/list-tables to see if tables are working 
 if not run the `./bin/ddb/schemaload` then run your seed 
 ![seedworked](https://user-images.githubusercontent.com/75420964/231976360-e5ee2fcd-5fe1-44f7-92a4-56c1b75281fd.png)
+
 create the scan file and input 
+
 ```
 #!/usr/bin/env python3
 
@@ -396,6 +398,83 @@ for item in items:
   print(item)
 ```
 ![ddb- scan](https://user-images.githubusercontent.com/75420964/231976708-d7f5d4ef-8933-402e-b352-9b09f622cacd.png)
+
+add this to the docker file under backend:
+` AWS_ENDPOINT_URL: "https://ddb:8000`
+  
+  
+  create the patterns folder in ddb then 
+  create the list-conversation file 
+  ```
+  #!/usr/bin/env python3
+
+import boto3
+import sys
+import json
+import os
+import datetime
+
+current_path = os.path.dirname(os.path.abspath(__file__))
+parent_path = os.path.abspath(os.path.join(current_path, '..', '..', '..'))
+sys.path.append(parent_path)
+from lib.db import db
+
+attrs = {
+  'endpoint_url': 'http://localhost:8000'
+}
+
+if len(sys.argv) == 2:
+  if "prod" in sys.argv[1]:
+    attrs = {}
+
+ddb = boto3.client('dynamodb',**attrs)
+table_name = 'cruddur-messages'
+
+def get_my_user_uuid():
+  sql = """
+    SELECT 
+      users.uuid
+    FROM users
+    WHERE
+      users.handle =%(handle)s
+  """
+  uuid = db.query_value(sql,{
+    'handle':  'andrewbrown'
+  })
+  return uuid
+
+my_user_uuid = get_my_user_uuid()
+print(f"my-uuid: {my_user_uuid}")
+
+current_year = datetime.datetime.now().year
+# define the query parameters
+query_params = {
+  'TableName': table_name,
+  'KeyConditionExpression': 'pk = :pk  AND begins_with(sk,:year)',
+  'ScanIndexForward': False,
+  'ExpressionAttributeValues': {
+    ':year': {'S': str(current_year) },
+    ':pk': {'S': f"GRP#{my_user_uuid}"}
+  },
+  'ReturnConsumedCapacity': 'TOTAL'
+}
+
+# query the table
+response = ddb.query(**query_params)
+
+# print the items returned by the query
+print(json.dumps(response, sort_keys=True, indent=2))
+  ```
+create the get-conversations file in the patterns
+```
+```
+create the ddb.py in the lib folder of the backend 
+```
+```
+
+
+
+
 
 
 
