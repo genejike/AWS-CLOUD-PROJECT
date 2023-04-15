@@ -19,12 +19,12 @@ class Ddb:
     table_name = 'cruddur-messages'
     query_params = {
       'TableName': table_name,
-      'KeyConditionExpression': 'pk = :pk AND begins_with(sk,:year)',
+      'KeyConditionExpression': 'pk = :pk ',#AND begins_with(sk,:year)',
       'ScanIndexForward': False,
       'Limit': 20,
       'ExpressionAttributeValues': {
         ':year': {'S': str(current_year) },
-        ':pkey': {'S': f"GRP#{my_user_uuid}"}
+        ':pk': {'S': f"GRP#{my_user_uuid}"}
       }
     }
     print('query-params')
