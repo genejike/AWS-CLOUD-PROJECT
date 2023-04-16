@@ -368,12 +368,17 @@ run the `./bin/db/create` to create tables
  
  then the `./bin/db/seed` to tes it if its working 
  ![boto3 error](https://user-images.githubusercontent.com/75420964/231975533-fc2a87af-071e-4da6-826e-26c59cae9f22.png)
+ 
 ![psycong error](https://user-images.githubusercontent.com/75420964/231975558-9bba347b-648c-4dc6-9b60-aa4131989028.png)
- i had to rerun my `pip install -r requirements.txt to stop that error 
+
+ i had to rerun my `pip install -r requirements.txt` to stop that error 
  and 
+ 
  ![datareturned corrrectly for 2nd seed](https://user-images.githubusercontent.com/75420964/231975734-7889fc7b-fa2e-4039-ae06-29987b047082.png)
 it works 
+
 inserted my create messages .run the ./bin/ddb/list-tables to see if tables are working 
+
 if not run the `./bin/ddb/schemaload` then run your seed 
 ![seedworked](https://user-images.githubusercontent.com/75420964/231976360-e5ee2fcd-5fe1-44f7-92a4-56c1b75281fd.png)
 
