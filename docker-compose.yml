@@ -17,7 +17,7 @@ services:
       ROLLBAR_ACCESS_TOKEN: "${ROLLBAR_ACCESS_TOKEN}"
       AWS_COGNITO_USER_POOL_ID: "${AWS_USER_POOL_ID}"
       AWS_COGNITO_USER_POOL_CLIENT_ID: "3864vngn9mf4lhh77s8jpeneoe"
-      AWS_ENDPOINT_URL: "https://ddb:8000"
+      AWS_ENDPOINT_URL: "https://dynamodb-local:8000"
     
     build: ./backend-flask
     ports:
@@ -49,14 +49,14 @@ services:
     ports:
       - 2000:2000/udp
     
-  #dynamodb-local:
-  ddb:
+  dynamodb-local:
+  #ddb:
     #https://stackoverflow.com/questions/67533058/persist-local-dynamodb-data-in-volumes-lack-permission-unable-to-open-databa
    # We needed to add user:root to get this working.
    user: root
    command: "-jar DynamoDBLocal.jar -sharedDb -dbPath ./data"
    image: "amazon/dynamodb-local:latest"
-   container_name: ddb #dynamodb-local
+   container_name: dynamodb-local #ddb
    ports:
       - "8000:8000"
    volumes:
