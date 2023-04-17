@@ -36,6 +36,7 @@ class Ddb:
     items = response['Items']
     
     print("items::", items)
+    
     results = []
     for item in items:
       last_sent_at = item['sk']['S']
@@ -55,7 +56,7 @@ class Ddb:
       'TableName': table_name,
       'KeyConditionExpression': 'pk = :pk AND begins_with(sk,:year)',
       'ScanIndexForward': False,
-      'Limit': 40,
+      'Limit': 20,
       'ExpressionAttributeValues': {
         ':year': {'S': str(current_year) },
         ':pk': {'S': f"MSG#{message_group_uuid}"}
