@@ -24,7 +24,7 @@ my_user_display_name = "Andrew Brown"
 my_user_handle = "andrewbrown"
 
 other_user_uuid = str(uuid.uuid4())
-other_user_display_name = "Andrew Bayo"
+other_user_display_name = "Andrew Bayko"
 other_user_handle = "bayko"
 
 # Entity # Message Group ID # User ID
