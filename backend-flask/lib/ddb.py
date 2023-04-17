@@ -15,7 +15,7 @@ class Ddb:
     return dynamodb
 
   def list_message_groups(client,my_user_uuid):
-    current_year = datetime.datetime.now().year
+    current_year = datetime.now().year
     table_name = 'cruddur-messages'
     query_params = {
       'TableName': table_name,
