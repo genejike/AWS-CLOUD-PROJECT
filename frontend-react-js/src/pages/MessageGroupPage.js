@@ -2,14 +2,11 @@ import './MessageGroupPage.css';
 import React from "react";
 import { useParams } from 'react-router-dom';
 
+import checkAuth from '../lib/CheckAuth';
 import DesktopNavigation  from '../components/DesktopNavigation';
 import MessageGroupFeed from '../components/MessageGroupFeed';
 import MessagesFeed from '../components/MessageFeed';
 import MessagesForm from '../components/MessageForm';
-import checkAuth from '../lib/Checkauth';
-// [TODO] Authenication
-// import Cookies from 'js-cookie'
-
 export default function MessageGroupPage() {
   const [messageGroups, setMessageGroups] = React.useState([]);
   const [messages, setMessages] = React.useState([]);
@@ -25,7 +22,7 @@ export default function MessageGroupPage() {
         headers: {
           Authorization: `Bearer ${localStorage.getItem("access_token")}`
         },
-          method: "GET"
+        method: "GET"
       });
       let resJson = await res.json();
       if (res.status === 200) {
@@ -57,6 +54,7 @@ export default function MessageGroupPage() {
       console.log(err);
     }
   };  
+
   React.useEffect(()=>{
     //prevents double call
     if (dataFetchedRef.current) return;

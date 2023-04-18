@@ -157,6 +157,8 @@ def data_messages(message_group_uuid):
 
   access_token = extract_access_token(request.headers)
   try:
+    app.logger.debug("authenicated")
+    app.logger.debug(claims)
     claims = cognito_jwt_token.verify(access_token)
     cognito_user_id = claims['sub']
     model = Messages.run(
