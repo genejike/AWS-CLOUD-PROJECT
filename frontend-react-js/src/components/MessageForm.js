@@ -19,10 +19,9 @@ export default function ActivityForm(props) {
     try {
       const backend_url = `${process.env.REACT_APP_BACKEND_URL}/api/messages`
       console.log('onsubmit payload', message)
-
-      let json = { message: message }
+      let json = { 'message': message }
       if (params.handle) {
-        json.user_receiver_handle = params.handle
+        json.handle = params.handle
       } else {
         json.message_group_uuid = params.message_group_uuid
       }
@@ -30,9 +29,9 @@ export default function ActivityForm(props) {
       const res = await fetch(backend_url, {
         method: "POST",
         headers: {
+          'Authorization': `Bearer ${localStorage.getItem("access_token")}`,
           'Accept': 'application/json',
-          'Content-Type': 'application/json',
-          'Authorization': `Bearer ${localStorage.getItem("access_token")}`
+          'Content-Type': 'application/json'
         },
         body: JSON.stringify(json)
       });

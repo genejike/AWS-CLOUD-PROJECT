@@ -4,8 +4,6 @@ import React from "react";
 import DesktopNavigation  from '../components/DesktopNavigation';
 import MessageGroupFeed from '../components/MessageGroupFeed';
 import checkAuth from '../lib/CheckAuth';
-// [TODO] Authenication
-// import Cookies from 'js-cookie'
 
 export default function MessageGroupsPage() {
   const [messageGroups, setMessageGroups] = React.useState([]);
@@ -20,7 +18,7 @@ export default function MessageGroupsPage() {
         headers: {
           Authorization: `Bearer ${localStorage.getItem("access_token")}`
         },
-          method: "GET"
+        method: "GET"
       });
       let resJson = await res.json();
       if (res.status === 200) {
