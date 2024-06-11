@@ -212,7 +212,7 @@ We'll create a subscription supply the TopicARN and our Email
     --topic-arn TopicARN \
     --protocol email \
     --notification-endpoint your@email.com
-Check your email and confirm the subscription
+Check your email and confirm the subscription or confirm it from the aws management console 
 
 ![Alt text](/Journal-images/image-0/billingandbudget.png)
 
